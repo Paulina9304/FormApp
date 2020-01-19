@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 class App extends Component {
@@ -118,44 +119,53 @@ class App extends Component {
 
   render(){
   return (
-    <div className="App">
+    <div className="App container-fluid" > 
      <form onSubmit={this.handleSubmit} noValidate>
 
-       <label htmlFor="user"> Twoję imię:
-         <input type="text" id="user" name="username" 
+        <div className="form-group row">
+       <label htmlFor="user" className="form-group"> Twoję imię:
+        
+         <input type="text" id="user" name="username" className="form-control"
          value={this.state.username}
          onChange={this.handleChange}/>
-  {this.state.errors.username && 
-  <span>{this.messages.username_incorrect}</span>}
+        
+         {this.state.errors.username && 
+        <span className="text-muted">{this.messages.username_incorrect}</span>}
        </label>
+       </div>
 
-       <label htmlFor="user"> Twój email:
-         <input type="email" id="email" name="email" 
+        <div className="form-group row">
+       <label htmlFor="user" className="form-group"> Twój email:
+         <input type="email" id="email" name="email" className="form-control"
          value={this.state.email}
          onChange={this.handleChange}/>
          {this.state.errors.email && 
-  <span>{this.messages.email_incorrect}</span>}
+  <span className="text-muted">{this.messages.email_incorrect}</span>}
        </label>
+       </div>
 
-       <label htmlFor="password"> Twoje hasło:
-         <input type="password" id="password" name="pass" 
+        <div className="form-group row">
+       <label htmlFor="password" className="form-group"> Twoje hasło:
+         <input type="password" id="password" name="pass" className="form-control"
          value={this.state.pass}
          onChange={this.handleChange}/>
          {this.state.errors.pass && 
-          <span>{this.messages.password_incorrect}</span>}
+          <span className="text-muted">{this.messages.password_incorrect}</span>}
        </label>
+       </div>
 
+       <div className="form-group row">
        <label htmlFor='accept'>
          <input type="checkbox" id="accept" name="accept" 
          checked={this.state.accept} onChange={this.handleChange}/> Akceptuję regulamin
        </label>
-
        {this.state.errors.accept && 
-      <span>{this.messages.accept_incorrect}</span>}
+      <span className="text-muted">{this.messages.accept_incorrect}</span>}
+      </div>
 
-       <button>Zapisz się</button>
+       <button className="btn btn-primary">Zapisz się</button>
      </form>
-     {this.state.message && <h3>{this.state.message}</h3> }
+     {this.state.message && <h3 className="alert alert-success">{this.state.message}</h3> }
     </div>
   );
   }
